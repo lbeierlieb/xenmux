@@ -60,4 +60,9 @@ in
     minor = 20;
     extra = 1;
   };
+  xen4_20_0 = xen_version_test {
+    major = 4;
+    minor = 20;
+    extra = 0;
+  };
 }
