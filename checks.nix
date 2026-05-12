@@ -11,9 +11,6 @@
         virtualisation.useBootLoader = true;
         virtualisation.installBootLoader = true;
         virtualisation.useEFIBoot = true;
-        environment.systemPackages = with pkgs; [
-          pciutils
-        ];
         systemd.services.renamehvc = {
           wantedBy = [ "backdoor.service" ];
           requires = [
