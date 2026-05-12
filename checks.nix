@@ -43,7 +43,6 @@ let
           };
         };
       testScript = ''
-        machine.wait_for_unit("multi-user.target", timeout=300)
         machine.succeed("cat /sys/hypervisor/version/major | grep ${maj}")
         machine.succeed("cat /sys/hypervisor/version/minor | grep ${min}")
         machine.succeed("cat /sys/hypervisor/version/extra | grep ${ex}")
