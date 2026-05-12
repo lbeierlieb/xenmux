@@ -6,6 +6,10 @@
 }:
 let
   cfg = config.xenmux;
+  xen_source_hash = {
+    "4.20.2" = "ZDPjsEAEH5bW0156MVvOKUeqg+mwdce0GFdUTBH39Qc";
+    "4.20.1" = "mqVuMqvSNIEGynnVHvg8M/4DG7sDls3tf32EQsn0PsI";
+  };
   xen_package =
     {
       major,
@@ -24,7 +28,7 @@ let
         owner = "xen-project";
         repo = "xen";
         tag = "RELEASE-${version_string}";
-        hash = "sha256-mqVuMqvSNIEGynnVHvg8M/4DG7sDls3tf32EQsn0PsI=";
+        hash = "sha256-${xen_source_hash.${version_string}}=";
       };
     });
 in
