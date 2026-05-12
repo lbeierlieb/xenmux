@@ -1,7 +1,7 @@
 { pkgs }:
 {
-  xen4_20 = pkgs.testers.runNixOSTest {
-    name = "xen4_20 boot";
+  xen4_20_2 = pkgs.testers.runNixOSTest {
+    name = "xen4_20_2 boot";
     nodes.machine =
       { pkgs, ... }:
       {
