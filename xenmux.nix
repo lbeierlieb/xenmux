@@ -19,14 +19,7 @@ let
     "4.19.0" = "Y7EKojIBu/x1NDj7MZc20uDcCWA8RYdpw158NiCBZes";
     "4.18.5" = "DhRRHsximX0YDJHI9Y5nVL6Vn0yO4w9bCWhEy0sPhZg";
   };
-  xen_extra_patches = {
-    "4.19.1" = [
-      (pkgs.fetchpatch {
-        url = "https://github.com/xen-project/xen/commit/fbe3ec72dc0d6ecf4007fdb6eff821cc7570e9ca.patch";
-        hash = "sha256-giOsek2TwEVqwvbfYRIOdrS4c3bdVNsBM8bvEbKnRTc=";
-      })
-    ];
-  };
+  xen_extra_patches = { };
   xen_package =
     {
       major,
