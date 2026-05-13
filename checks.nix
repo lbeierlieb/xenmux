@@ -105,4 +105,29 @@ in
     minor = 18;
     extra = 5;
   };
+  xen4_18_4 = xen_version_test {
+    major = 4;
+    minor = 18;
+    extra = 4;
+  };
+  xen4_18_3 = xen_version_test {
+    major = 4;
+    minor = 18;
+    extra = 3;
+  };
+  xen4_18_2 = xen_version_test {
+    major = 4;
+    minor = 18;
+    extra = 2;
+  };
+  xen4_18_1 = xen_version_test {
+    major = 4;
+    minor = 18;
+    extra = 1;
+  };
+  xen4_18_0 = xen_version_test {
+    major = 4;
+    minor = 18;
+    extra = 0;
+  };
 }

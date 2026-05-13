@@ -18,6 +18,11 @@ let
     "4.19.1" = "GZ/Y1uHta/XgrXVV+we6dTWgSo5Z6qgYe0qAs9bjsjY";
     "4.19.0" = "Y7EKojIBu/x1NDj7MZc20uDcCWA8RYdpw158NiCBZes";
     "4.18.5" = "DhRRHsximX0YDJHI9Y5nVL6Vn0yO4w9bCWhEy0sPhZg";
+    "4.18.4" = "cpg4niHH5L74YI5bmjjdcoUk8xzXQeIYHRPCM+U2s4s";
+    "4.18.3" = "16rxQQ0GIhz8WR1lCOYkgYJh3UOCQgQn8bp4hzq33pQ";
+    "4.18.2" = "MsKFqlBx7OkmQN8zxAjUTWsOSSr/wM2U+xO/t248lCE";
+    "4.18.1" = "IQg7YMU+7YzHY/LFbycd5+lvlOuMIECDqq8T+lwPMm4";
+    "4.18.0" = "1g/5+xxcjWEMxY5bulYd7JFGQMNVex7TsHgtySMR44M";
   };
   xen_extra_patches = { };
   xen_package =
