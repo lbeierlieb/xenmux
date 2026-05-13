@@ -90,6 +90,11 @@ in
     minor = 19;
     extra = 2;
   };
+  xen4_19_1 = xen_version_test {
+    major = 4;
+    minor = 19;
+    extra = 1;
+  };
   xen4_19_0 = xen_version_test {
     major = 4;
     minor = 19;

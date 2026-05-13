@@ -15,8 +15,16 @@ let
     "4.19.4" = "lG6KDBuh07jL/sWbrv26YpZZYWEG4SA36opVzK/mlNE";
     "4.19.3" = "U4a071Ryf7XxJaTLsTpi1pWGQozFAT57f8kgSsCIJ2w";
     "4.19.2" = "3jgSgTozlx+XwH5xZBgS9JL6V/tfI6RMclMNIxQ8JNo";
+    "4.19.1" = "GZ/Y1uHta/XgrXVV+we6dTWgSo5Z6qgYe0qAs9bjsjY";
     "4.19.0" = "Y7EKojIBu/x1NDj7MZc20uDcCWA8RYdpw158NiCBZes";
   };
+  xen_extra_patches = {
+    "4.19.1" = [
+      (pkgs.fetchpatch {
+        url = "https://github.com/xen-project/xen/commit/fbe3ec72dc0d6ecf4007fdb6eff821cc7570e9ca.patch";
+        hash = "sha256-giOsek2TwEVqwvbfYRIOdrS4c3bdVNsBM8bvEbKnRTc=";
+      })
+    ];
   };
   xen_package =
     {
@@ -38,7 +46,7 @@ let
         tag = "RELEASE-${version_string}";
         hash = "sha256-${xen_source_hash.${version_string}}=";
       };
-      patches = lib.take 2 old.patches;
+      patches = lib.take 2 old.patches ++ (xen_extra_patches.${version_string} or [ ]);
     });
 in
 {
