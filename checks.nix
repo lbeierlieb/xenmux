@@ -70,4 +70,29 @@ in
     minor = 20;
     extra = 0;
   };
+  xen4_19_5 = xen_version_test {
+    major = 4;
+    minor = 19;
+    extra = 5;
+  };
+  xen4_19_4 = xen_version_test {
+    major = 4;
+    minor = 19;
+    extra = 4;
+  };
+  xen4_19_3 = xen_version_test {
+    major = 4;
+    minor = 19;
+    extra = 3;
+  };
+  xen4_19_2 = xen_version_test {
+    major = 4;
+    minor = 19;
+    extra = 2;
+  };
+  xen4_19_0 = xen_version_test {
+    major = 4;
+    minor = 19;
+    extra = 0;
+  };
 }
