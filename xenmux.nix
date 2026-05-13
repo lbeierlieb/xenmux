@@ -23,8 +23,12 @@ let
     "4.18.2" = "MsKFqlBx7OkmQN8zxAjUTWsOSSr/wM2U+xO/t248lCE";
     "4.18.1" = "IQg7YMU+7YzHY/LFbycd5+lvlOuMIECDqq8T+lwPMm4";
     "4.18.0" = "1g/5+xxcjWEMxY5bulYd7JFGQMNVex7TsHgtySMR44M";
+    "4.17.6" = "j0PpK2KMWl+brcs9+h3cbiy9HiK9m5v55ghm4awrv1c";
   };
   xen_extra_patches = { };
+  xen_python_packages =
+    { major, minor }:
+    if major < 4 || (major == 4 && minor <= 17) then pkgs.python311Packages else pkgs.python3Packages;
   xen_package =
     {
       major,
@@ -37,17 +41,19 @@ let
       ex = toString extra;
       version_string = "${maj}.${min}.${ex}";
     in
-    pkgs.xen.overrideAttrs (old: {
-      version = version_string;
-      src = pkgs.fetchFromGitHub {
-        owner = "xen-project";
-        repo = "xen";
-        tag = "RELEASE-${version_string}";
-        hash = "sha256-${xen_source_hash.${version_string}}=";
-      };
-      patches = lib.take 1 old.patches ++ (xen_extra_patches.${version_string} or [ ]);
-      configureFlags = (old.configureFlags or [ ]) ++ [ "--disable-ocamltools" ];
-    });
+    (pkgs.xen.override { python3Packages = xen_python_packages { inherit major minor; }; })
+    .overrideAttrs
+      (old: {
+        version = version_string;
+        src = pkgs.fetchFromGitHub {
+          owner = "xen-project";
+          repo = "xen";
+          tag = "RELEASE-${version_string}";
+          hash = "sha256-${xen_source_hash.${version_string}}=";
+        };
+        patches = lib.take 1 old.patches ++ (xen_extra_patches.${version_string} or [ ]);
+        configureFlags = (old.configureFlags or [ ]) ++ [ "--disable-ocamltools" ];
+      });
 in
 {
   options.xenmux = {
