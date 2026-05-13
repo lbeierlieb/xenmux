@@ -14,6 +14,6 @@
     in
     {
       nixosModules.default = xenmux-module;
-      checks = import ./checks.nix { inherit pkgs; };
+      checks.${system} = import ./checks.nix { inherit pkgs; };
     };
 }
