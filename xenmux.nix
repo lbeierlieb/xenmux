@@ -7,6 +7,7 @@
 let
   cfg = config.xenmux;
   xen_source_hash = {
+    "4.20.3" = "+qTHIsDD2A5lVwmpJ7artnzdviT1XN05CYeu7JFxfqc";
     "4.20.2" = "ZDPjsEAEH5bW0156MVvOKUeqg+mwdce0GFdUTBH39Qc";
     "4.20.1" = "mqVuMqvSNIEGynnVHvg8M/4DG7sDls3tf32EQsn0PsI";
     "4.20.0" = "jmWixFEUa2h5L7nwVhk1W6wB4KZyhi7VDKVGpJi2w80";

@@ -50,6 +50,11 @@ let
     };
 in
 {
+  xen4_20_3 = xen_version_test {
+    major = 4;
+    minor = 20;
+    extra = 3;
+  };
   xen4_20_2 = xen_version_test {
     major = 4;
     minor = 20;
