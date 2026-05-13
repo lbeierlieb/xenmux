@@ -24,6 +24,10 @@ let
     "4.18.1" = "IQg7YMU+7YzHY/LFbycd5+lvlOuMIECDqq8T+lwPMm4";
     "4.18.0" = "1g/5+xxcjWEMxY5bulYd7JFGQMNVex7TsHgtySMR44M";
     "4.17.6" = "j0PpK2KMWl+brcs9+h3cbiy9HiK9m5v55ghm4awrv1c";
+    "4.17.5" = "QgtbibcGoNg6XSUPBgdMWWsfQlKKVlZ5cq+OqhC6i1Q";
+    "4.17.4" = "YytnA2Z12Up2iVoZwPoTGm/MWxpH6xoPlzW1uL+BM5g";
+    "4.17.3" = "lxsp0/lCkrKHOZpIHu3Lg6U1N2CZdBtdv0ZFa63cnMA";
+    "4.17.2" = "9xCMRrXMx9AFmI417cqcNx6yZdOZUqsIp68iwg4J8iI";
   };
   xen_extra_patches = { };
   xen_python_packages =

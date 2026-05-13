@@ -135,4 +135,24 @@ in
     minor = 17;
     extra = 6;
   };
+  xen4_17_5 = xen_version_test {
+    major = 4;
+    minor = 17;
+    extra = 5;
+  };
+  xen4_17_4 = xen_version_test {
+    major = 4;
+    minor = 17;
+    extra = 4;
+  };
+  xen4_17_3 = xen_version_test {
+    major = 4;
+    minor = 17;
+    extra = 3;
+  };
+  xen4_17_2 = xen_version_test {
+    major = 4;
+    minor = 17;
+    extra = 2;
+  };
 }
