@@ -17,6 +17,7 @@ let
     "4.19.2" = "3jgSgTozlx+XwH5xZBgS9JL6V/tfI6RMclMNIxQ8JNo";
     "4.19.1" = "GZ/Y1uHta/XgrXVV+we6dTWgSo5Z6qgYe0qAs9bjsjY";
     "4.19.0" = "Y7EKojIBu/x1NDj7MZc20uDcCWA8RYdpw158NiCBZes";
+    "4.18.5" = "DhRRHsximX0YDJHI9Y5nVL6Vn0yO4w9bCWhEy0sPhZg";
   };
   xen_extra_patches = {
     "4.19.1" = [
@@ -46,7 +47,8 @@ let
         tag = "RELEASE-${version_string}";
         hash = "sha256-${xen_source_hash.${version_string}}=";
       };
-      patches = lib.take 2 old.patches ++ (xen_extra_patches.${version_string} or [ ]);
+      patches = lib.take 1 old.patches ++ (xen_extra_patches.${version_string} or [ ]);
+      configureFlags = (old.configureFlags or [ ]) ++ [ "--disable-ocamltools" ];
     });
 in
 {
