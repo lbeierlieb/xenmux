@@ -1,18 +1,10 @@
-{ pkgs }:
+pkgs:
 let
+  lib = pkgs.lib;
   xen_version_test =
-    {
-      major,
-      minor,
-      extra,
-    }:
-    let
-      maj = toString major;
-      min = toString minor;
-      ex = toString extra;
-    in
+    version:
     pkgs.testers.runNixOSTest {
-      name = "xen${maj}_${min}_${ex} boot";
+      name = "xen${lib.replaceStrings [ "." ] [ "_" ] version} boot";
       nodes.machine =
         { pkgs, ... }:
         {
@@ -20,7 +12,7 @@ let
 
           xenmux = {
             enable = true;
-            inherit major minor extra;
+            inherit version;
           };
 
           boot.loader.systemd-boot.enable = true;
@@ -43,116 +35,13 @@ let
           };
         };
       testScript = ''
-        machine.succeed("cat /sys/hypervisor/version/major | grep ${maj}")
-        machine.succeed("cat /sys/hypervisor/version/minor | grep ${min}")
-        machine.succeed("cat /sys/hypervisor/version/extra | grep ${ex}")
+        machine.succeed("xl info | grep xen_version | grep ${version}")
       '';
     };
 in
-{
-  xen4_20_3 = xen_version_test {
-    major = 4;
-    minor = 20;
-    extra = 3;
-  };
-  xen4_20_2 = xen_version_test {
-    major = 4;
-    minor = 20;
-    extra = 2;
-  };
-  xen4_20_1 = xen_version_test {
-    major = 4;
-    minor = 20;
-    extra = 1;
-  };
-  xen4_20_0 = xen_version_test {
-    major = 4;
-    minor = 20;
-    extra = 0;
-  };
-  xen4_19_5 = xen_version_test {
-    major = 4;
-    minor = 19;
-    extra = 5;
-  };
-  xen4_19_4 = xen_version_test {
-    major = 4;
-    minor = 19;
-    extra = 4;
-  };
-  xen4_19_3 = xen_version_test {
-    major = 4;
-    minor = 19;
-    extra = 3;
-  };
-  xen4_19_2 = xen_version_test {
-    major = 4;
-    minor = 19;
-    extra = 2;
-  };
-  xen4_19_1 = xen_version_test {
-    major = 4;
-    minor = 19;
-    extra = 1;
-  };
-  xen4_19_0 = xen_version_test {
-    major = 4;
-    minor = 19;
-    extra = 0;
-  };
-  xen4_18_5 = xen_version_test {
-    major = 4;
-    minor = 18;
-    extra = 5;
-  };
-  xen4_18_4 = xen_version_test {
-    major = 4;
-    minor = 18;
-    extra = 4;
-  };
-  xen4_18_3 = xen_version_test {
-    major = 4;
-    minor = 18;
-    extra = 3;
-  };
-  xen4_18_2 = xen_version_test {
-    major = 4;
-    minor = 18;
-    extra = 2;
-  };
-  xen4_18_1 = xen_version_test {
-    major = 4;
-    minor = 18;
-    extra = 1;
-  };
-  xen4_18_0 = xen_version_test {
-    major = 4;
-    minor = 18;
-    extra = 0;
-  };
-  xen4_17_6 = xen_version_test {
-    major = 4;
-    minor = 17;
-    extra = 6;
-  };
-  xen4_17_5 = xen_version_test {
-    major = 4;
-    minor = 17;
-    extra = 5;
-  };
-  xen4_17_4 = xen_version_test {
-    major = 4;
-    minor = 17;
-    extra = 4;
-  };
-  xen4_17_3 = xen_version_test {
-    major = 4;
-    minor = 17;
-    extra = 3;
-  };
-  xen4_17_2 = xen_version_test {
-    major = 4;
-    minor = 17;
-    extra = 2;
-  };
-}
+lib.listToAttrs (
+  map (version: {
+    name = "xen${lib.replaceStrings [ "." ] [ "_" ] version}";
+    value = xen_version_test version;
+  }) (import ./xen_versions.nix)
+)
